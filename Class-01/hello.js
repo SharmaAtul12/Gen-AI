@@ -6,6 +6,7 @@ const client = new OpenAI({
   apiKey: process.env.OPEN_AI_API_KEY
 });
 
+// Completions API , which is deprecated now . 
 client.chat.completions.create({
   model: "gpt-4",
   messages: [{role: 'user', content: "hello , how are you ?"}]
