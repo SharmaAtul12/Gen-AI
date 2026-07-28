@@ -4,24 +4,22 @@ This repository contains my learning notes, exercises, and small Gen-AI projects
 
 ## Current Repository Status
 
-- The repo includes practical exercises from Classes 01 to 09.
+- The repository now includes completed work for Classes 01 through 09.
 - Most folders contain runnable Node.js examples with their own dependencies.
-- Class 08 is the most complete project-style example, with a document processing and retrieval workflow.
-- Some folders are still placeholders or scaffolding for future work.
+- Class 08 is the most complete project-style example, featuring document processing and retrieval workflows.
+- Class 09 is now marked as completed and includes the final cohort materials and notes.
 
 ## Class-by-Class Overview
 
-| Class | Current Focus |
-| --- | --- |
-| Class 01 | LLM basics, tokens, and simple starter scripts such as hello.js and token.js. |
-| Class 02 | Prompting techniques including zero-shot, few-shot, chain-of-thought, tool use, and role-play examples, plus a small weather app exercise. |
-| Class 03 | SDK-based examples for OpenAI, Claude, and Gemini, including streaming responses and interview-related practice files. |
-| Class 04 | Docker setup and RAG practice files for indexing and querying content. |
-| Class 05 | Project 1, Part 1 placeholder folder. |
-| Class 06 | Project 1, Part 2 placeholder folder. |
-| Class 07 | Placeholder area for additional cohort work. |
-| Class 08 | A more developed project with document ingestion, queueing, worker processing, and Qdrant/OpenAI integration. |
-| Class 09 | Notes and follow-up materials. |
+1. Class 01: LLM basics, tokens, and simple starter scripts such as hello.js and token.js.
+2. Class 02: Prompting techniques including zero-shot, few-shot, chain-of-thought, tool use, and role-play examples, plus a small weather app exercise.
+3. Class 03: SDK-based examples for OpenAI, Claude, and Gemini, including streaming responses and interview-related practice files.
+4. Class 04: Docker setup and RAG practice files for indexing and querying content.
+5. Class 05: Project 1, Part 1 placeholder folder.
+6. Class 06: Project 1, Part 2 placeholder folder.
+7. Class 07: Placeholder area for additional cohort work.
+8. Class 08: A more developed project with document ingestion, queueing, worker processing, and Qdrant/OpenAI integration.
+9. Class 09: Final cohort wrap-up materials, notes, and completed follow-up exercises.
 
 ## Getting Started
 
