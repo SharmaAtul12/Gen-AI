@@ -1,8 +1,13 @@
 import "dotenv/config";
 import { OpenAI } from "openai";
+import { Anthropic } from "@anthropic-ai/sdk";
 
 const client = new OpenAI({
   apiKey: process.env.OPEN_AI_API_KEY,
+});
+
+const claude = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 // Chain of thought prompting
@@ -70,7 +75,25 @@ async function run(prompt = "") {
     console.log(`🤖 (${parsedResult.step}) : ${parsedResult.text}`);
 
     if (parsedResult.step.toUpperCase() === "THINK") {
-      //TODO: Make a claude call to validate if thinking is correct or not . and push that result into MESSAGES_DB
+      if (!process.env.ANTHROPIC_API_KEY) {
+        console.warn("⚠️ Skipping Claude validation because ANTHROPIC_API_KEY is not set.");
+      } else {
+        const validationPrompt = `Review the following reasoning and decide whether it is logically sound. Respond with a short JSON object in this exact format: {"isCorrect": true|false, "feedback": "..."}\n\nReasoning:\n${parsedResult.text}`;
+
+        const validationResult = await claude.messages.create({
+          model: "claude-opus-4-8",
+          max_tokens: 256,
+          messages: [{ role: "user", content: validationPrompt }],
+        });
+
+        const validationText = validationResult.content
+          .filter((block) => block.type === "text")
+          .map((block) => block.text)
+          .join("\n");
+
+        MESSAGES_DB.push({ role: "assistant", content: `Claude validation: ${validationText}` });
+        console.log(`🧠 Claude validation: ${validationText}`);
+      }
     }
 
     if (parsedResult.step.toUpperCase() === "OUTPUT") break;
