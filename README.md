@@ -17,7 +17,7 @@ This repository contains my learning notes, exercises, and small Gen-AI projects
 4. Class 04: Docker setup and RAG practice files for indexing and querying content.
 5. Class 05: Project 1, Part 1 placeholder folder.
 6. Class 06: Project 1, Part 2 placeholder folder.
-7. Class 07: Placeholder area for additional cohort work.
+7. Class 07: Advanced RAG patterns, including query rewriting, query ranking, and HyDE.
 8. Class 08: A more developed project with document ingestion, queueing, worker processing, and Qdrant/OpenAI integration.
 9. Class 09: Final cohort wrap-up materials, notes, and completed follow-up exercises.
 
