@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "Build-With-Atul-MCP-StdIO": {
+      "type": "stdio",
+      "command": "node",
+      "cwd": "${workspaceFolder}/Class-17",
+      "args": ["index.js"]
+    },
+    "Build-With-Atul-MCP-Streamable": {
+      "type": "http",
+      "url": "http://localhost:3000/mcp"
+    }
+  }
+}
