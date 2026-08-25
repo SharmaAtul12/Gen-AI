@@ -10,9 +10,9 @@ crashes."
 Everything here is JavaScript and Node.js first, with a little TypeScript later on, and
 plenty of API-based AI integrations along the way.
 
-> The story so far: **15 classes completed.** What started as printing tokens to a console
-> has grown into RAG pipelines, autonomous agents, graph memory, and durable multi-step
-> workflows.
+> The story so far: **17 classes completed.** What started as printing tokens to a console
+> has grown into RAG pipelines, autonomous agents, graph memory, durable multi-step
+> workflows, and standardized tool protocols.
 
 ---
 
@@ -32,24 +32,27 @@ The training wheels came off. I built project milestones (a ChatGPT-style clone 
 NotebookLM-style clone), went deep on advanced retrieval, shipped an end-to-end RAG service
 with queues and workers, and started thinking about how an agent *remembers* across turns.
 
-**Act III — Thinking Like a Systems Engineer (Classes 14–15).**
+**Act III — Thinking Like a Systems Engineer (Classes 14–17).**
 The final act is about the plumbing that makes AI reliable. I learned to model connected
-data with graph databases and to run long, multi-step agent workflows that don't fall apart
-when a step fails. This is where "AI feature" turned into "AI system."
+data with graph databases, run long multi-step agent workflows that don't fall apart when a
+step fails, ship a real-world PR review agent, and standardize tool access across AI
+platforms with MCP. This is where "AI feature" turned into "AI system."
 
 ---
 
 ## Snapshot of Where Things Stand
 
-- All **15 classes** are complete, from LLM fundamentals to durable agent orchestration.
+- All **17 classes** are complete, from LLM fundamentals to MCP tool standardization.
 - Most folders hold runnable Node.js examples with their own dependencies and `.env` setup.
 - **Class 08** is the most complete service-style project: document ingestion, a queue, a
   worker, Qdrant, and OpenAI working together.
 - **Class 10** introduces TypeScript and the Agent SDK, with a proper `src/app` structure.
 - **Classes 14 and 15** add the systems layer: Neo4j graph modeling and Inngest durable
   execution.
-- Project classes (05, 06, 11, 12, 13) are milestone markers — the full code lives in
-  their dedicated project repositories (ChaiGPT and NoteBookLM).
+- **Class 16** is a project milestone: a GitHub PR Review Agent (full code in its own repo).
+- **Class 17** builds a hands-on MCP server with both STDIO and Streamable HTTP transports.
+- Project classes (05, 06, 11, 12, 13, 16) are milestone markers — the full code lives in
+  their dedicated project repositories (ChaiGPT, NoteBookLM, and Github-PR-Review-Agent).
 
 ---
 
@@ -72,6 +75,8 @@ when a step fails. This is where "AI feature" turned into "AI system."
 | Class 13 | Project 2, Part 3 | NotebookLM clone continued. |
 | Class 14 | Graph databases | Neo4j and Cypher, graph memory agent assignment. |
 | Class 15 | Durable execution | Inngest for reliable, multi-step agent workflows. |
+| Class 16 | GitHub PR Review Agent | Project milestone (full code in Github-PR-Review-Agent repo). |
+| Class 17 | Model Context Protocol | MCP server with STDIO and Streamable HTTP transports. |
 
 ---
 
@@ -182,16 +187,49 @@ nodes and edges, retrieves relevant memory before answering, and runs a self-cor
 to keep improving. This is where memory (Class 09) and structure came together.
 
 ### Class 15 — Durable Execution with Inngest
-The finale is about reliability. When you chain agents together, everything that can go wrong
-will: steps crash, APIs time out, servers restart, emails get sent twice. This class contrasts
-the painful DIY approach (RabbitMQ, workers, hand-rolled retries, state tracking, monitoring,
-idempotency) with **Inngest**, a durable execution engine. You write a workflow as a series
-of **steps** (`step.run`, `step.sleep`), and Inngest gives you checkpointing, automatic
-per-step retries, durable sleeps, and a monitoring dashboard for free. The project is a
-minimal Express + Inngest app (`index.js` + `inngest/index.js`) with a `hello-agent` function
-that shows a step succeeding, a durable pause, and a step that fails and retries — without
-re-running earlier steps. The 80/20 lesson: let the engine handle the plumbing so you can
-focus on the agent logic.
+The finale of the reliability arc. When you chain agents together, everything that can go
+wrong will: steps crash, APIs time out, servers restart, emails get sent twice. This class
+contrasts the painful DIY approach (RabbitMQ, workers, hand-rolled retries, state tracking,
+monitoring, idempotency) with **Inngest**, a durable execution engine. You write a workflow
+as a series of **steps** (`step.run`, `step.sleep`), and Inngest gives you checkpointing,
+automatic per-step retries, durable sleeps, and a monitoring dashboard for free. The project
+is a minimal Express + Inngest app (`index.js` + `inngest/index.js`) with a `hello-agent`
+function that shows a step succeeding, a durable pause, and a step that fails and retries —
+without re-running earlier steps. The 80/20 lesson: let the engine handle the plumbing so
+you can focus on the agent logic.
+
+### Class 16 — GitHub PR Review Agent (Project 3)
+Putting agents to work on a real developer workflow. This class produced a **GitHub PR Review
+Agent** — an autonomous agent that reviews pull requests, analyzes diffs, and provides
+feedback. The full implementation lives in the
+[Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent) repository.
+This was the first time the agent wasn't just answering questions but actively participating
+in a software engineering process.
+
+### Class 17 — Model Context Protocol (MCP)
+The standardization chapter. In 2024, every AI platform (OpenAI, Claude, Cursor, etc.) had
+its own way of attaching tools — an N×M fragmentation problem. **MCP** solves this the same
+way REST solved API design: one universal protocol that any tool implements once and any
+agent consumes once.
+
+I built an MCP server (`index.js`) with two transports:
+- **STDIO** — the client spawns the server as a child process and communicates via
+  stdin/stdout using JSON-RPC 2.0. Local, zero-network, great for dev tools.
+- **Streamable HTTP** — the server runs independently on a port and any remote client
+  connects via URL. Deploy once, use from anywhere.
+
+Key concepts that landed:
+- The JSON-RPC lifecycle: `initialize` → `notifications/initialized` → `tools/list` →
+  `tools/call`.
+- Why MCP hides implementation behind metadata (name + description + schema), just like REST
+  hides controllers behind endpoints.
+- **Context poisoning** — connecting 200+ tools floods the LLM context. The emerging
+  **MCP Gateway** pattern applies RAG to tools: only retrieve the relevant tool on demand.
+- Real-world limits: simple IoT (smart bulbs) wraps easily; secure devices with idempotency
+  keys (cars) resist naïve wrapping.
+
+The takeaway: write your tool once with MCP, and it works with Claude, OpenAI, Cursor, Google
+ADK, and any future MCP-compatible agent.
 
 ---
 
@@ -211,6 +249,6 @@ focus on the agent logic.
 - This repository is a **learning workspace**, not a production-ready application. The value
   is in the notes and the journey, not in polished deployable code.
 - The structure is intentionally **class-based** so progress across the cohort is easy to
-  follow, from the first token to the final durable workflow.
-- The two main projects (ChaiGPT and NoteBookLM) live in their own repositories; the milestone
-  folders here mark where each part was covered in the timeline.
+  follow, from the first token to the MCP standard.
+- The main projects (ChaiGPT, NoteBookLM, and Github-PR-Review-Agent) live in their own
+  repositories; the milestone folders here mark where each part was covered in the timeline.
