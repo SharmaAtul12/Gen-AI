@@ -31,6 +31,9 @@ with a simple RAG setup.
 The training wheels came off. I built project milestones (a ChatGPT-style clone and a
 NotebookLM-style clone), went deep on advanced retrieval, shipped an end-to-end RAG service
 with queues and workers, and started thinking about how an agent *remembers* across turns.
+The two main projects from this arc are [ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT)
+and [Chaibook](https://github.com/SharmaAtul12/Chaibook)
+([deployed](http://chaibook-one.vercel.app/)).
 
 **Act III — Thinking Like a Systems Engineer (Classes 14–17).**
 The final act is about the plumbing that makes AI reliable. I learned to model connected
@@ -52,7 +55,9 @@ platforms with MCP. This is where "AI feature" turned into "AI system."
 - **Class 16** is a project milestone: a GitHub PR Review Agent (full code in its own repo).
 - **Class 17** builds a hands-on MCP server with both STDIO and Streamable HTTP transports.
 - Project classes (05, 06, 11, 12, 13, 16) are milestone markers — the full code lives in
-  their dedicated project repositories (ChaiGPT, NoteBookLM, and Github-PR-Review-Agent).
+  their dedicated project repositories ([ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT),
+  [Chaibook](https://github.com/SharmaAtul12/Chaibook), and
+  [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent)).
 
 ---
 
@@ -64,13 +69,13 @@ platforms with MCP. This is where "AI feature" turned into "AI system."
 | Class 02 | Prompting techniques | Zero-shot, few-shot, CoT, tool use, role-play, weather app. |
 | Class 03 | SDK integrations | OpenAI, Claude, and Gemini SDKs, plus streaming and interview practice. |
 | Class 04 | Docker + RAG basics | Containers with `docker-compose`, simple indexing and querying. |
-| Class 05 | Project 1, Part 1 | ChatGPT clone milestone (full code in the ChaiGPT repo). |
+| Class 05 | Project 1, Part 1 | ChatGPT clone milestone (full code in [ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT) repo). |
 | Class 06 | Project 1, Part 2 | ChatGPT clone continued. |
 | Class 07 | Advanced RAG | Query rewriting, ranking, HyDE, guardrails, retrieval routing. |
 | Class 08 | End-to-end RAG project | Ingestion, queueing, workers, Qdrant, and OpenAI. |
 | Class 09 | Memory in AI agents | Short-term vs long-term memory, extraction, eviction. |
 | Class 10 | Agent SDK | TypeScript app structure, config, and the Agent SDK. |
-| Class 11 | Project 2, Part 1 | NotebookLM clone milestone (full code in the NoteBookLM repo). |
+| Class 11 | Project 2, Part 1 | NotebookLM clone milestone (full code in [Chaibook](https://github.com/SharmaAtul12/Chaibook) repo). |
 | Class 12 | Project 2, Part 2 | NotebookLM clone continued. |
 | Class 13 | Project 2, Part 3 | NotebookLM clone continued. |
 | Class 14 | Graph databases | Neo4j and Cypher, graph memory agent assignment. |
@@ -115,12 +120,13 @@ instead of its training memory.
 
 ### Class 05 — Project 1, Part 1 (ChatGPT Clone)
 The first project milestone. This folder is a marker for Part 1 of the ChatGPT-style clone;
-the full implementation lives in the **ChaiGPT** repository. Starting a real project made
-all the earlier fundamentals click.
+the full implementation lives in the [**ChaiGPT**](https://github.com/SharmaAtul12/ChaiGPT)
+repository. Starting a real project made all the earlier fundamentals click.
 
 ### Class 06 — Project 1, Part 2
 The project continues. Part 2 builds on the foundation from Part 1, still tracked in the
-ChaiGPT repo. Milestone folders like this keep the cohort progress readable at a glance.
+[ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT) repo. Milestone folders like this keep
+the cohort progress readable at a glance.
 
 ### Class 07 — Advanced RAG
 Basic RAG retrieves and answers. Advanced RAG makes that pipeline *smart*. I studied how a
@@ -166,15 +172,16 @@ flow. This was the shift from calling a model to *architecting* an agent.
 
 ### Class 11 — Project 2, Part 1 (NotebookLM Clone)
 The second project begins. This is the milestone marker for Part 1 of a NotebookLM-style
-clone; the full code lives in the **NoteBookLM** repository. A more ambitious project that
+clone; the full code lives in the [**Chaibook**](https://github.com/SharmaAtul12/Chaibook)
+repository ([live demo](http://chaibook-one.vercel.app/)). A more ambitious project that
 pulls together retrieval, memory, and agents.
 
 ### Class 12 — Project 2, Part 2
-The NotebookLM clone continues into Part 2, building on the foundation from the previous
+The Chaibook clone continues into Part 2, building on the foundation from the previous
 milestone.
 
 ### Class 13 — Project 2, Part 3
-Part 3 rounds out the NotebookLM clone milestones. Three parts of steady, incremental
+Part 3 rounds out the Chaibook clone milestones. Three parts of steady, incremental
 progress on a real product-shaped project.
 
 ### Class 14 — Thinking in Graphs (Neo4j + Cypher)
@@ -250,5 +257,8 @@ ADK, and any future MCP-compatible agent.
   is in the notes and the journey, not in polished deployable code.
 - The structure is intentionally **class-based** so progress across the cohort is easy to
   follow, from the first token to the MCP standard.
-- The main projects (ChaiGPT, NoteBookLM, and Github-PR-Review-Agent) live in their own
-  repositories; the milestone folders here mark where each part was covered in the timeline.
+- The main projects ([ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT),
+  [Chaibook](https://github.com/SharmaAtul12/Chaibook), and
+  [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent)) live in
+  their own repositories; the milestone folders here mark where each part was covered in the
+  timeline.
