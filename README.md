@@ -10,9 +10,9 @@ crashes."
 Everything here is JavaScript and Node.js first, with a little TypeScript later on, and
 plenty of API-based AI integrations along the way.
 
-> The story so far: **17 classes completed.** What started as printing tokens to a console
+> The story so far: **18 classes completed.** What started as printing tokens to a console
 > has grown into RAG pipelines, autonomous agents, graph memory, durable multi-step
-> workflows, and standardized tool protocols.
+> workflows, standardized tool protocols, and packaged, publishable agent skills.
 
 ---
 
@@ -35,17 +35,18 @@ The two main projects from this arc are [ChaiGPT](https://github.com/SharmaAtul1
 and [Chaibook](https://github.com/SharmaAtul12/Chaibook)
 ([deployed](http://chaibook-one.vercel.app/)).
 
-**Act III — Thinking Like a Systems Engineer (Classes 14–17).**
-The final act is about the plumbing that makes AI reliable. I learned to model connected
-data with graph databases, run long multi-step agent workflows that don't fall apart when a
-step fails, ship a real-world PR review agent, and standardize tool access across AI
-platforms with MCP. This is where "AI feature" turned into "AI system."
+**Act III — Thinking Like a Systems Engineer (Classes 14–18).**
+The final act is about the plumbing that makes AI reliable and reusable. I learned to model
+connected data with graph databases, run long multi-step agent workflows that don't fall
+apart when a step fails, ship a real-world PR review agent, standardize tool access across AI
+platforms with MCP, and finally package it all into publishable **Skills** — building and
+shipping my own Next.js setup skill. This is where "AI feature" turned into "AI system."
 
 ---
 
 ## Snapshot of Where Things Stand
 
-- All **17 classes** are complete, from LLM fundamentals to MCP tool standardization.
+- All **18 classes** are complete, from LLM fundamentals to packaged, publishable Skills.
 - Most folders hold runnable Node.js examples with their own dependencies and `.env` setup.
 - **Class 08** is the most complete service-style project: document ingestion, a queue, a
   worker, Qdrant, and OpenAI working together.
@@ -54,6 +55,8 @@ platforms with MCP. This is where "AI feature" turned into "AI system."
   execution.
 - **Class 16** is a project milestone: a GitHub PR Review Agent (full code in its own repo).
 - **Class 17** builds a hands-on MCP server with both STDIO and Streamable HTTP transports.
+- **Class 18** covers Claude Skills end-to-end and ships a published skill:
+  [NextJS-Project-Setup-Skill](https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill).
 - Project classes (05, 06, 11, 12, 13, 16) are milestone markers — the full code lives in
   their dedicated project repositories ([ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT),
   [Chaibook](https://github.com/SharmaAtul12/Chaibook), and
@@ -82,6 +85,7 @@ platforms with MCP. This is where "AI feature" turned into "AI system."
 | Class 15 | Durable execution | Inngest for reliable, multi-step agent workflows. |
 | Class 16 | GitHub PR Review Agent | Project milestone (full code in Github-PR-Review-Agent repo). |
 | Class 17 | Model Context Protocol | MCP server with STDIO and Streamable HTTP transports. |
+| Class 18 | Skills (Claude Skills) | Building, testing, packaging, and publishing skills; shipped [NextJS-Project-Setup-Skill](https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill). |
 
 ---
 
@@ -237,6 +241,37 @@ Key concepts that landed:
 
 The takeaway: write your tool once with MCP, and it works with Claude, OpenAI, Cursor, Google
 ADK, and any future MCP-compatible agent.
+
+### Class 18 — Skills (Claude Skills)
+The packaging chapter. If MCP fixed *how* tools connect, Skills fix *how capabilities are
+bundled and shared*. This class started with the limitations of raw MCP (too many tools
+loading = context poisoning, network latency, server-side scalability, forced statelessness)
+and introduced **Skills** as the answer: a package (`SKILL.md` + optional `scripts/`,
+`references/`, `assets/`) that bundles prompts, code, docs, and even an MCP server into one
+publishable unit.
+
+Key concepts that landed:
+- **Progressive disclosure** — only frontmatter metadata loads up front (Level 1), the body
+  loads when the skill triggers (Level 2), and resources load on demand (Level 3+), so the
+  context stays clean.
+- **Local-first execution** — skills run on the downloader's machine, sidestepping the
+  scalability and statelessness problems of central MCP servers.
+- **Writing the frontmatter** — the `name` + `description` are the only always-loaded part,
+  so the description must say *what it does* and *when to trigger it*.
+- **Packaging & publishing** — turning a skill into a plugin (`.claude-plugin/plugin.json`),
+  zipping it correctly, choosing between Claude Code and Claude.ai, and publishing via GitHub
+  / `skills.sh` so anyone can run `npx skills add <repo>`.
+- **MCP vs Connector vs Skill vs Plugin** — not competing choices but layers that stack.
+
+The capstone: I built and published my own skill,
+[**NextJS-Project-Setup-Skill**](https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill),
+which scaffolds a Next.js project through conversation. Install it with:
+
+```bash
+npx skills add https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill
+```
+
+This is where "I use tools" turned into "I ship reusable capabilities others can install."
 
 ---
 
