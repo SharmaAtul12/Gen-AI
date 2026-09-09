@@ -5,21 +5,22 @@ while working through the Gen-AI cohort — the notes I scribbled, the scripts I
 fixed, and the small projects that slowly taught me how modern AI systems are actually
 built. It reads less like a textbook and more like a travel diary: each class is a stop on
 the road from "what even is a token?" to "let me orchestrate a fleet of agents that survive
-crashes."
+crashes and talk back in real time."
 
 Everything here is JavaScript and Node.js first, with a little TypeScript later on, and
 plenty of API-based AI integrations along the way.
 
-> The story so far: **18 classes completed.** What started as printing tokens to a console
+> The story so far: **21 classes completed.** What started as printing tokens to a console
 > has grown into RAG pipelines, autonomous agents, graph memory, durable multi-step
-> workflows, standardized tool protocols, and packaged, publishable agent skills.
+> workflows, standardized tool protocols, packaged publishable skills, real-time voice
+> agents, and product-shaped projects.
 
 ---
 
-## The Story in Three Acts
+## The Story in Four Acts
 
-The cohort naturally splits into three arcs, and looking back, each one changed how I think
-about building with AI.
+The cohort naturally splits into arcs, and looking back, each one changed how I think about
+building with AI.
 
 **Act I — Learning to Speak to Models (Classes 01–04).**
 This is where I met the LLM as a raw tool. I learned that a model is really just tokens in,
@@ -36,31 +37,47 @@ and [Chaibook](https://github.com/SharmaAtul12/Chaibook)
 ([deployed](http://chaibook-one.vercel.app/)).
 
 **Act III — Thinking Like a Systems Engineer (Classes 14–18).**
-The final act is about the plumbing that makes AI reliable and reusable. I learned to model
+This act is about the plumbing that makes AI reliable and reusable. I learned to model
 connected data with graph databases, run long multi-step agent workflows that don't fall
 apart when a step fails, ship a real-world PR review agent, standardize tool access across AI
 platforms with MCP, and finally package it all into publishable **Skills** — building and
 shipping my own Next.js setup skill. This is where "AI feature" turned into "AI system."
 
+**Act IV — Real-Time and Shipping Products (Classes 19–21).**
+The most recent arc pushes into real-time interaction and product delivery. I built a
+browser **voice agent** from scratch — evolving it phase by phase to handle interruptions,
+streaming, audio ordering, and natural barge-in — and then moved into two more product-shaped
+projects: **RepoChat** and an **AI Pitch Deck** generator. This is where the systems started
+to feel like things real people could actually use.
+
 ---
 
 ## Snapshot of Where Things Stand
 
-- All **18 classes** are complete, from LLM fundamentals to packaged, publishable Skills.
-- Most folders hold runnable Node.js examples with their own dependencies and `.env` setup.
-- **Class 08** is the most complete service-style project: document ingestion, a queue, a
-  worker, Qdrant, and OpenAI working together.
-- **Class 10** introduces TypeScript and the Agent SDK, with a proper `src/app` structure.
+- All **21 classes** are complete, from LLM fundamentals to real-time voice agents and
+  product projects.
+- Most folders hold runnable Node.js examples with their own dependencies and `.env` setup,
+  and several classes now include a detailed, step-by-step walkthrough in their own
+  `README.md` (for example Classes 03, 04, 08, 10, 14, 15, 17, 18, 19).
+- **Class 08** is the most complete service-style RAG project: document ingestion, a queue,
+  a worker, Qdrant, and OpenAI working together, plus advanced retrieval.
+- **Class 10** builds an agent **from scratch** in TypeScript using the Builder and Observer
+  patterns and a tool-calling loop, with a proper `src/app` structure.
 - **Classes 14 and 15** add the systems layer: Neo4j graph modeling and Inngest durable
   execution.
-- **Class 16** is a project milestone: a GitHub PR Review Agent (full code in its own repo).
+- **Class 16** is a standalone mini-project: a GitHub PR Review Agent (full code in its own
+  repo).
 - **Class 17** builds a hands-on MCP server with both STDIO and Streamable HTTP transports.
 - **Class 18** covers Claude Skills end-to-end and ships a published skill:
   [NextJS-Project-Setup-Skill](https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill).
-- Project classes (05, 06, 11, 12, 13, 16) are milestone markers — the full code lives in
-  their dedicated project repositories ([ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT),
-  [Chaibook](https://github.com/SharmaAtul12/Chaibook), and
-  [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent)).
+- **Class 19** builds a real-time voice agent across five phases (full code in the
+  [Voice-AI-Agent](https://github.com/SharmaAtul12/Voice-AI-Agent) repo).
+- Project classes are milestone markers — the full code lives in dedicated repositories:
+  [ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT) (Project 1),
+  [Chaibook](https://github.com/SharmaAtul12/Chaibook) (Project 2),
+  [RepoChat](https://github.com/SharmaAtul12/RepoChat) (Project 3),
+  [AI-Pitch-Deck](https://github.com/SharmaAtul12/AI-Pitch-Deck) (Project 4), plus the
+  standalone [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent).
 
 ---
 
@@ -77,15 +94,18 @@ shipping my own Next.js setup skill. This is where "AI feature" turned into "AI 
 | Class 07 | Advanced RAG | Query rewriting, ranking, HyDE, guardrails, retrieval routing. |
 | Class 08 | End-to-end RAG project | Ingestion, queueing, workers, Qdrant, and OpenAI. |
 | Class 09 | Memory in AI agents | Short-term vs long-term memory, extraction, eviction. |
-| Class 10 | Agent SDK | TypeScript app structure, config, and the Agent SDK. |
+| Class 10 | Agent from scratch | TypeScript agent with Builder + Observer patterns and a tool-calling loop. |
 | Class 11 | Project 2, Part 1 | NotebookLM clone milestone (full code in [Chaibook](https://github.com/SharmaAtul12/Chaibook) repo). |
 | Class 12 | Project 2, Part 2 | NotebookLM clone continued. |
 | Class 13 | Project 2, Part 3 | NotebookLM clone continued. |
 | Class 14 | Graph databases | Neo4j and Cypher, graph memory agent assignment. |
 | Class 15 | Durable execution | Inngest for reliable, multi-step agent workflows. |
-| Class 16 | GitHub PR Review Agent | Project milestone (full code in Github-PR-Review-Agent repo). |
+| Class 16 | GitHub PR Review Agent | Standalone mini-project (full code in [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent) repo). |
 | Class 17 | Model Context Protocol | MCP server with STDIO and Streamable HTTP transports. |
 | Class 18 | Skills (Claude Skills) | Building, testing, packaging, and publishing skills; shipped [NextJS-Project-Setup-Skill](https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill). |
+| Class 19 | Voice and realtime agents | Chained STT→LLM→TTS pipeline, streaming, audio queue, barge-in ([Voice-AI-Agent](https://github.com/SharmaAtul12/Voice-AI-Agent) repo). |
+| Class 20 | Project 3 | RepoChat milestone (full code in [RepoChat](https://github.com/SharmaAtul12/RepoChat) repo). |
+| Class 21 | Project 4 | AI Pitch Deck milestone (full code in [AI-Pitch-Deck](https://github.com/SharmaAtul12/AI-Pitch-Deck) repo). |
 
 ---
 
@@ -113,14 +133,15 @@ Time to stop using toy calls and talk to real APIs. I integrated the **OpenAI**,
 and **Gemini** SDKs, then learned to **stream** responses token-by-token instead of waiting
 for the whole reply. The `Interviews/` screenshots capture practice questions from this
 stretch. Lesson learned: every provider has its own personality and quirks, but the mental
-model is shared.
+model is shared. (See this class's own `README.md` for a full walkthrough of each SDK.)
 
 ### Class 04 — Docker and My First RAG
 Two big ideas landed here. First, **Docker** and `docker-compose` for running dependencies
 in containers instead of installing everything locally. Second, my first **RAG** workflow:
 `indexing.js` to chunk and store a PDF (`software.pdf`), and `query.js` to retrieve and
 answer questions against it. This was the first time the model answered using *my* data
-instead of its training memory.
+instead of its training memory. (See this class's own `README.md` for the full RAG pipeline
+breakdown.)
 
 ### Class 05 — Project 1, Part 1 (ChatGPT Clone)
 The first project milestone. This folder is a marker for Part 1 of the ChatGPT-style clone;
@@ -150,11 +171,11 @@ service split across `src/`:
 - `qdrant.js` — the vector store
 - `openai.js` — embeddings and generation
 - `queue.js` and `worker.js` — background processing so ingestion doesn't block requests
-- `retriever.js` — pull relevant context at query time
+- `retriever.js` — advanced retrieval (query rewriting, step-back, HyDE, sub-queries, RRF)
 - `config.js` and `index.js` — wiring it all together
 
-With `docker-compose.yml` bringing up the infrastructure, this class taught me how RAG looks
-when it has to survive real traffic.
+With `docker-compose.yml` bringing up Qdrant and Redis, this class taught me how RAG looks
+when it has to survive real traffic. (See this class's own `README.md` for the deep dive.)
 
 ### Class 09 — Giving Agents a Memory
 A raw LLM is stateless — it forgets everything between calls. This class was about faking and
@@ -167,12 +188,17 @@ then genuinely building memory:
 The one-liner I kept: an agent *feels* like it remembers because the app decides exactly what
 context to send.
 
-### Class 10 — Stepping Up to the Agent SDK
-This class introduced the **Agent SDK** and, with it, **TypeScript**. I set up a proper
-project structure (`src/app/agent.ts`, `src/app/config.ts`, `src/index.ts`) with `tsconfig.json`
-and a `dist/` build output. The notes folder captures the design patterns that make agents
-tick — the Builder pattern, the initial flow, the interceptor/observer flow, and the tool
-flow. This was the shift from calling a model to *architecting* an agent.
+### Class 10 — Building an Agent From Scratch
+This class introduced **TypeScript** and, more importantly, taught me to *architect* an agent
+rather than just call a model. I built a reusable `Agent` class from scratch using two design
+patterns: the **Builder pattern** for a clean, chainable configuration API
+(`Agent.builder().setInstructions(...).tool(...).build()`), and the **Observer pattern**
+(interceptors) so the agent just broadcasts messages while listeners decide what to do. At its
+core is a **tool-calling loop** driven by a "harness" prompt that forces a structured
+reasoning pipeline (INITIAL → THINK → ANALYZE → TOOL_REQUEST → OUTPUT). The project structure
+(`src/app/agent.ts`, `src/app/config.ts`, `src/index.ts`) with `tsconfig.json` and a `dist/`
+build output, plus a `Notes/` folder of pattern diagrams, made the design click. (See this
+class's own `README.md` for the full walkthrough.)
 
 ### Class 11 — Project 2, Part 1 (NotebookLM Clone)
 The second project begins. This is the milestone marker for Part 1 of a NotebookLM-style
@@ -209,7 +235,7 @@ function that shows a step succeeding, a durable pause, and a step that fails an
 without re-running earlier steps. The 80/20 lesson: let the engine handle the plumbing so
 you can focus on the agent logic.
 
-### Class 16 — GitHub PR Review Agent (Project 3)
+### Class 16 — GitHub PR Review Agent (Standalone Mini-Project)
 Putting agents to work on a real developer workflow. This class produced a **GitHub PR Review
 Agent** — an autonomous agent that reviews pull requests, analyzes diffs, and provides
 feedback. The full implementation lives in the
@@ -273,11 +299,41 @@ npx skills add https://github.com/SharmaAtul12/NextJS-Project-Setup-Skill
 
 This is where "I use tools" turned into "I ship reusable capabilities others can install."
 
+### Class 19 — Voice and Realtime Agents
+The real-time chapter. LLMs are fundamentally **text-to-text**, so this class builds a
+browser voice agent using the **chained architecture**: Speech-To-Text → LLM → Text-To-Speech,
+keeping the model in the text world while STT sits on the front and TTS on the back. The agent
+is built up across five phases (`Phase1.js` → `Phase5.js`), each fixing the exact weakness of
+the one before:
+- **Phase 1** — the minimal STT → LLM → TTS loop (works, but rigid).
+- **Phase 2** — interruption management: stop the current audio when a new turn starts.
+- **Phase 3** — streaming text to cut latency (and the garbled overlap it exposes).
+- **Phase 4** — an audio queue so streamed clips play in order, one at a time.
+- **Phase 5** — sentence buffering, session-based interruption, and mic-energy **barge-in**
+  so the user can cut in naturally the instant they start talking.
+
+The full code and the actual voice agent live in the
+[Voice-AI-Agent](https://github.com/SharmaAtul12/Voice-AI-Agent) repository. (See this
+class's own `README.md` for a phase-by-phase deep dive.)
+
+### Class 20 — Project 3 (RepoChat)
+A product milestone: **RepoChat**, a project for chatting with / over code repositories. This
+folder is the milestone marker; the full implementation lives in the
+[**RepoChat**](https://github.com/SharmaAtul12/RepoChat) repository. It pulls together the
+retrieval, agent, and systems lessons from earlier classes into a real product.
+
+### Class 21 — Project 4 (AI Pitch Deck)
+The latest product milestone: an **AI Pitch Deck** generator. This folder marks the milestone;
+the full implementation lives in the
+[**AI-Pitch-Deck**](https://github.com/SharmaAtul12/AI-Pitch-Deck) repository. Another
+end-to-end, product-shaped build on top of everything the cohort covered.
+
 ---
 
 ## Getting Started
 
-1. Open the class folder you want to explore.
+1. Open the class folder you want to explore. Many classes include their own `README.md` with
+   a detailed walkthrough — start there.
 2. Install dependencies with `npm install` if a `package.json` is present.
 3. Copy or review the environment file (`.env` or `.env.example`) and add any required API keys.
 4. For classes that need infrastructure (Class 04, 08, 14, 15), start the containers or dev
@@ -291,9 +347,12 @@ This is where "I use tools" turned into "I ship reusable capabilities others can
 - This repository is a **learning workspace**, not a production-ready application. The value
   is in the notes and the journey, not in polished deployable code.
 - The structure is intentionally **class-based** so progress across the cohort is easy to
-  follow, from the first token to the MCP standard.
-- The main projects ([ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT),
-  [Chaibook](https://github.com/SharmaAtul12/Chaibook), and
-  [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent)) live in
-  their own repositories; the milestone folders here mark where each part was covered in the
-  timeline.
+  follow, from the first token to real-time voice agents.
+- The main projects live in their own repositories; the milestone folders here mark where each
+  part was covered in the timeline:
+  [ChaiGPT](https://github.com/SharmaAtul12/ChaiGPT) (Project 1),
+  [Chaibook](https://github.com/SharmaAtul12/Chaibook) (Project 2),
+  [RepoChat](https://github.com/SharmaAtul12/RepoChat) (Project 3),
+  [AI-Pitch-Deck](https://github.com/SharmaAtul12/AI-Pitch-Deck) (Project 4),
+  the standalone [Github-PR-Review-Agent](https://github.com/SharmaAtul12/Github-PR-Review-Agent),
+  and the [Voice-AI-Agent](https://github.com/SharmaAtul12/Voice-AI-Agent) from Class 19.
